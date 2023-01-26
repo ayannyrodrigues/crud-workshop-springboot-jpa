@@ -21,7 +21,7 @@ public class UserService {
 	
 	public User findUserById(Long id) {
 		Optional<User> userId = repository.findById(id);
-		return userId.get();
+		return userId.get();		
 	}
 		
 }
