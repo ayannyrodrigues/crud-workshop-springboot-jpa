@@ -3,7 +3,6 @@ package com.backend.workshop.entities;
 import java.io.Serializable;
 import java.time.Instant;
 
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,8 +15,6 @@ import javax.persistence.Table;
 
 import com.backend.workshop.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
