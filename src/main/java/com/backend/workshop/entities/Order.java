@@ -16,16 +16,17 @@ import javax.persistence.Table;
 import com.backend.workshop.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "tb_order")
@@ -39,13 +40,16 @@ public class Order implements Serializable{
 	private Long id;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GTM")
+	@NonNull
 	private Instant moment;
 	
 	@Enumerated(EnumType.STRING)
+	@NonNull
 	private OrderStatus status;
 	
 	@ManyToOne
 	@JoinColumn(name = "client_id") //criando a chave estrangeira "client_id" na "tb_order"
+	@NonNull
 	private User client;
 		
 }
