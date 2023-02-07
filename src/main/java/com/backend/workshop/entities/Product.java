@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -47,8 +49,12 @@ public class Product implements Serializable{
 	@NonNull
 	private String imgUrl;
 	
-	@Transient
+	@ManyToMany
+	@JoinTable(name = "tb_product_category", 
+	joinColumns = @JoinColumn(name = "product_id"), 
+	inverseJoinColumns = @JoinColumn(name = "category_id")) //nome da tabela de associação e criação das chaves estrangeiras
 	@Setter(value = AccessLevel.NONE)
 	private Set<Category> categories = new HashSet<>(); //garantir que a coleção vai começar vazia e não nula
 	
 }
+

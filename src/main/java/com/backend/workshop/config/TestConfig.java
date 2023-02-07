@@ -50,8 +50,7 @@ public class TestConfig implements CommandLineRunner {
 		Product secondProduct = new Product("Smart TV", "4K Ultra HD deliver a clearer and more vibrant picture with brighter colors.", 2190.0, "");
 		Product thirdProduct = new Product("PC Gamer", "This powerful gaming PC is capable of running all your favorite games.", 3600.0, "");
 		Product fourthProduct = new Product("Wireless Headphones", "Ultra-comfortable, lightweight design with soft fit leather", 200.0, "");
-		
-		
+				
 		
 		Category firstCategory = new Category("Books");
 		Category secondCategory = new Category("Computers");
@@ -61,5 +60,13 @@ public class TestConfig implements CommandLineRunner {
 		orderRepository.saveAll(Arrays.asList(firstOder, secondOder, thirdOder, fourthOder));
 		productRepository.saveAll(Arrays.asList(firstProduct, secondProduct, thirdProduct, fourthProduct));
 		categoryRepository.saveAll(Arrays.asList(firstCategory, secondCategory, thirdCategory));
+		
+		firstProduct.getCategories().add(firstCategory);
+		secondProduct.getCategories().add(thirdCategory);
+		thirdProduct.getCategories().add(secondCategory);
+		thirdProduct.getCategories().add(thirdCategory);
+		fourthProduct.getCategories().add(thirdCategory);
+		
+		productRepository.saveAll(Arrays.asList(firstProduct, secondProduct, thirdProduct, fourthProduct));
 	}
 }
